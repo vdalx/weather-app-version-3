@@ -1,0 +1,19 @@
+
+.search-engine {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    &__wrapper {
+        display: flex;
+    }
+    &__query-message {
+        font-weight: bold;
+    }
+    &__display-item {
+        &--icon {
+            list-style-type: none;
+        }
+    }
+}

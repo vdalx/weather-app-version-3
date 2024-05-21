@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./SearchEngine.css";
+import "./SearchEngine.scss";
 import axios from "axios";
 
 function SearchEngine() {
@@ -58,14 +58,14 @@ function SearchEngine() {
                     <input type="submit" value="Search" className="btn" />
                 </div>
             </div>
-            <div>
+            <div className="search-engine__display-container">
                 {loaded && (
-                    <ul>
-                        <li>Temperature: {Math.round(weather.temp)}°C</li>
-                        <li>Description: {weather.desc}</li>
-                        <li>Humidity: {weather.humidity}%</li>
-                        <li>Wind: {weather.wind}km/h</li>
-                        <li>
+                    <ul className="search-engine__display-list">
+                        <li className="search-engine__display-item">Temperature: {Math.round(weather.temp)}°C</li>
+                        <li className="search-engine__display-item">Description: {weather.desc}</li>
+                        <li className="search-engine__display-item">Humidity: {weather.humidity}%</li>
+                        <li className="search-engine__display-item">Wind: {weather.wind}km/h</li>
+                        <li className="search-engine__display-item search-engine__display-item--icon">
                             <img src={weather.icon} alt={weather.description} />
                         </li>
                     </ul>
