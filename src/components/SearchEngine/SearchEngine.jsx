@@ -6,19 +6,34 @@ function SearchEngine() {
     const apiKey = "701f06352d61835bc4fc894e7b084629";
     
     const [city, setCity] = useState("");
-    const [loaded, setLoaded] = useState(false);
+    const [weatherLoaded, setWeatherLoaded] = useState(false);
+    const [forecastLoaded, setForecastLoaded] = useState(false);
     const [weather, setWeather] = useState({});
+    const [forecast, setForecast] = useState({});
 
     function handleSubmit(event) {
         event.preventDefault();
     
-        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        const apiUrlCurrent = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        const apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&appid=${apiKey}&units=metric`;
     
         axios
-            .get(apiUrl)
+            .get(apiUrlCurrent)
             .then((response) => {
+                console.log(response)
                 showWeather(response);
-                setLoaded(true);
+                setWeatherLoaded(true)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+            axios
+            .get(apiUrlForecast)
+            .then((response) => {
+                console.log(response)
+                showForecast(response);
+                setForecastLoaded(true)
             })
             .catch((error) => {
                 console.log(error);
@@ -31,6 +46,18 @@ function SearchEngine() {
     
     function showWeather(response) {
         setWeather({
+            city: response.data.name,
+            temp: response.data.main.temp,
+            desc: response.data.weather[0].description,
+            humidity: response.data.main.humidity,
+            wind: response.data.wind.speed,
+            icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+        });
+    }
+
+    function showForecast(response) {
+        setForecast({
+            city: response.data.name,
             temp: response.data.main.temp,
             desc: response.data.weather[0].description,
             humidity: response.data.main.humidity,
@@ -59,7 +86,7 @@ function SearchEngine() {
                 </div>
             </div>
             <div className="search-engine__display-container">
-                {loaded && (
+                {weatherLoaded && (
                     <ul className="search-engine__display-list">
                         <li className="search-engine__display-item">Temperature: {Math.round(weather.temp)}°C</li>
                         <li className="search-engine__display-item">Description: {weather.desc}</li>
