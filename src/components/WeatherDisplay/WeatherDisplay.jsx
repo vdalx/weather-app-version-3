@@ -9,11 +9,11 @@ function WeatherDisplay (props) {
         setTemperature(response.data.main.temp);
     }
     
-    const apiKey = "701f06352d61835bc4fc894e7b084629";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
+    //const apiKey = "701f06352d61835bc4fc894e7b084629";
+    //const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
     
     axios
-        .get(apiUrl)
+        .get()
         .then((response) => {
             showTemperature(response);
         })

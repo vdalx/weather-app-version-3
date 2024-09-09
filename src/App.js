@@ -1,12 +1,10 @@
 import './App.scss';
-import SearchEngine from './components/SearchEngine/SearchEngine';
-import WeatherDisplay from './components/WeatherDisplay/WeatherDisplay';
+import DisplayContainer from './components/DisplayContainer/DisplayContainer';
 
 function App() {
   return (
     <div className="App">
-      <SearchEngine />
-      <WeatherDisplay />
+      <DisplayContainer />
     </div>
   );
 }

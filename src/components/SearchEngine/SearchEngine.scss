@@ -1,19 +1,84 @@
+@use '../../styles/partials/colors' as *;
 
 .search-engine {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    
+    &__form-container {
+        background-color: white;
+        border: 0.0625rem solid rgb(229, 234, 237);
+        border-radius: 0.3125rem;
+        max-width: 37.5rem;
+        margin: 1.875rem auto;
+        padding: 1.25rem;
+    }
     &__wrapper {
         display: flex;
+        width: 100%;
+        align-items: center;
     }
-    &__query-message {
-        font-weight: bold;
+    &__search-field {
+        width: 70%;
+        margin-right: 1rem;
+    }
+    &__form-control {
+        background-color: $primary-background;
+        border: 0.0625rem solid $primary-outline;
+        color: #212529;
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        padding: 0.375rem 0.75rem;
+        width: 100%;
+    }
+    &__submit-btn {
+        border: 0.0625rem solid $type-three-btn-border;
+        border-radius: 0.375rem;
+        background-color: $type-three-btn;
+        color: $secondary-text;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.5rem;
     }
     &__display-item {
-        &--icon {
-            list-style-type: none;
+        list-style-type: none;
+    }
+    &__display-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    &__weather-details {
+        display: flex;
+        align-items: center;
+    }
+    &__weather-desc {
+        &:first-letter {
+            text-transform: uppercase;
         }
+    }
+    &__icon-temp {
+        display: flex;
+        align-items: center;
+        padding-right: 5rem;
+    }
+    &__temp {
+        font-size: 3.75rem;
+    }
+    &__temp-unit-icon {
+        font-size: 1rem;
+        position: relative;
+        top: -2rem;
+    }
+    &__weather-summary {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+    }
+    &__city-display {
+        color: $primary-text;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.75rem;
+        margin-bottom: 0;
     }
 }
